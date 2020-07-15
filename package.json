@@ -1,0 +1,45 @@
+{
+  "name": "thermal-printer",
+  "version": "4.1.0",
+  "description": "Print on Epson and Star thermal printers with NodeJS",
+  "main": "node-thermal-printer.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Klemen1337/node-thermal-printer.git"
+  },
+  "keywords": [
+    "thermal printer",
+    "thermal",
+    "printer",
+    "epson",
+    "star"
+  ],
+  "author": "Klemen Kastelic <klemen.kast@gmail.com> (http://kastelic.net/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Klemen1337/node-thermal-printer/issues"
+  },
+  "homepage": "https://github.com/Klemen1337/node-thermal-printer",
+  "dependencies": {
+    "iconv-lite": "0.4.24",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.0.1",
+    "koa2-cors": "^2.0.6",
+    "node-thermal-printer": "^4.1.0",
+    "pngjs": "3.3.3",
+    "unorm": "1.4.1",
+    "write-file-queue": "0.0.1",
+    "tasti-cloud-lib": "^1.3.37"
+  },
+  "devDependencies": {
+    "@types/node": "^10.14.2"
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
