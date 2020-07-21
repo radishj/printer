@@ -193,7 +193,7 @@ try{
     pData.push(["align","left"]);
     pData.push(["println","Order#: "+order.readableOrderNum]);
     pData.push(["println","Customer Info:"]);
-    pData.push(["printlr","Name:"+order.userName, "Phone:"+order.phoneNumber]);
+    pData.push(["printlr","Name:"+order.userFullName, "Phone:"+order.phoneNumber]);
     pData.push(["println","Placed: "+order.orderTime]);
     //if(o.OrderType[order.orderType] === "DELIVERY"){
     //    pData.push(["println","Address: "+order.customerAddress]);
@@ -224,7 +224,7 @@ try{
         if(product.productCount==1)
             optionsArr=[[['Main item', product.productName, mainItemPrice.toFixed(2)]]];
         else
-            optionsArr=[[['Main item', product.attributeName, mainItemPrice.toFixed(2)+' x '+product.productCount]]];
+            optionsArr=[[['Main item', product.productName, mainItemPrice.toFixed(2)+' x '+product.productCount]]];
         var optionCategoryName="        ";
         var categoryCount = 0;
         options.sort(function(a, b){
@@ -265,6 +265,9 @@ try{
                     optionsArr[categoryCount].push(['',option.subOptionShortName?option.optionName + '('+option.subOptionShortName+')':option.optionName, option.additionalOptionPrice?option.additionalOptionPrice.toFixed(2):'0'+' x '+option.optionPortions])
             }
         };
+        if(product.productNotes)
+            optionsArr=[[['Dish note', product.productNotes.replace('\n',' '), '']]];
+    
         pData.push(["set font big"]);
         pData.push(["printlr",product.productName,product.productTotalPrice?product.productTotalPrice.toFixed(2):'0']);
         pData.push(["set font small"]);
