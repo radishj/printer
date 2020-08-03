@@ -182,7 +182,7 @@ async function print (data) {
 function printOrder(data){
 try{
     const order = data.order;
-    console.log('order:', JSON.stringify(order, null, '  '))
+    //console.log('order:', JSON.stringify(order, null, '  '))
     //return
     var pData=[];
     //console.log('order:', JSON.stringify(order,null,"   "));
@@ -190,7 +190,11 @@ try{
     pData.push(["set font big"]);
     pData.push(["set font bold"]);
     pData.push(["println","Tasti"]);
-    pData.push(["println",OrderType[order.orderType]]);
+    let title = OrderType[order.orderType]
+    if(order.tableNum){
+        title += ' (Table:'+ order.tableNum+')'
+    }
+    pData.push(["println",title]);
     pData.push(["set font unbold"]);
     pData.push(["align","left"]);
     pData.push(["println","Order#: "+order.readableOrderNum]);
@@ -198,14 +202,14 @@ try{
     pData.push(["printlr","Name:"+order.userFullName, "Phone:"+order.userPhone]);
     pData.push(["println","Placed: "+new Date(order.orderTime).toLocaleTimeString('en-US')]);
     console.log('order.orderType != OrderType.DIRECT_PAY', order.orderType != OrderType.DIRECT_PAY, order.orderType, OrderType.DIRECT_PAY)
-    if(order.orderType != OrderType.DIRECT_PAY){
+    if(order.orderType == OrderType.IN_STORE_PICKUP || order.orderType == OrderType.CURBSIDE_PICKUP){
         //if(o.OrderType[order.orderType] === "DELIVERY"){
         //    pData.push(["println","Address: "+order.customerAddress]);
         //}
         //else { //if(order.orderType.toLowerCase()==="pickup"){
             pData.push(["align","center"]);
             pData.push(["println","Pickup Time"]);
-            var pickupTime = order.orderTime;
+            var pickupTime = order.orderTime+20*60*1000;
             //pickupTime.setMinutes(pickupTime.getMinutes()+20);
             //var dateStr = pickupTime.toLocaleDateString('en-US');
             //dateStr = dateStr.slice(0,dateStr.length-5);
@@ -318,6 +322,7 @@ try{
     pData.push(["println",restName]);
     //pData.push(["println",order.address]);
     print(pData);
+    //console.log("Print one receipt!")
     //console.log("Document data:", JSON.stringify(pData, null, "   "));
 
 } catch(error) {
