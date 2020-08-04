@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Klemen1337/node-thermal-printer",
   "dependencies": {
-    "@dxj/tasti-lib": "^1.0.9",
+    "@dxj/tasti-lib": "^1.0.9", 
     "iconv-lite": "0.4.24",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
